@@ -11,18 +11,16 @@ public class PetriDish
 	//use the star wars point and map as a basis for this project. use point location as
 	//a starting point to check if there is an element horizontal,vertical, and diagonal to the element.
 	private char [][] petriDish; //petriDish is a 2D array with asterisk
-	private char [][] testedDish; //testedDish is a 2D array with letters
 	public char [] letter = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 
-	int row = 0;
-	int col = 0;
+	int row = 8;
+	int col = 25;
 	/**
 	 * Making the default petri dish. Not populated yet
 	 */
 	public PetriDish() 
 	{
 		petriDish = new char [row][col];
-		testedDish = new char [row][col];
 	}
 	
 	
@@ -33,41 +31,32 @@ public class PetriDish
 	{
 		String fileName = "input.txt";
 		Scanner fromFile = null;
-		try 	
+		try 
 		{
 			fromFile = new Scanner(new File(fileName));
-			int [][] matrix = new int[row][col];
-			while(fromFile.hasNextLine()) 
+			do 
 			{
 				for(int i = 0; i < row; i++) 
 				{
-					for(int j = 0; j < col; col++) 
+					String scanLine = fromFile.nextLine();
+					char [][] matrix = new char [row][col];
+					
+					for(int j = 0; j < matrix[i].length; j++) 
 					{
-						try 
-						{
-							matrix [i][j] = fromFile.nextInt();
-						}
-						catch(java.util.NoSuchElementException e) 
-						{
-							System.out.print("No elements");
-						}
+						matrix[0] = scanLine.toCharArray();
+						
 					}
+					//petriDish[row][col] = matrix[row][col];
 				}
-				for(int i = 0; i < row; i++) 
-				{
-					for(int j = 0; j < col; j++)
-					{
-						System.out.print(matrix[i][j]);
-					}
-				}
-			}
-		
+				
+			}while(fromFile.hasNextLine());
+			fromFile.close();
+			//System.out.print(petriDish[row][col]);
 		}
-		catch(FileNotFoundException f)
+		catch(FileNotFoundException f) 
 		{
 			System.out.print("File not Found");
 		}
-		fromFile.close();
 		/**
 		try //try catch exception handling for the file
 		{
@@ -81,7 +70,6 @@ public class PetriDish
 					}
 			}
 			
-			scan.close();
 			
 			
 			for(int i = 0; i < row; i++) 
