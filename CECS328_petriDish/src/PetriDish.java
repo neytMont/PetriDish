@@ -13,7 +13,7 @@ public class PetriDish
 	//a starting point to check if there is an element horizontal,vertical, and diagonal to the element.
 	private char [][] petriDish; //petriDish is a 2D array with asterisk
 	public char [] letter = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-
+	
 	/**
 	 * Reading the file and making the matrix/xy-coordinates
 	 */
@@ -72,59 +72,6 @@ public class PetriDish
 			}
 			System.out.println();
 		}
-		/**
-		try 
-		{
-			fromFile = new Scanner(new File(fileName)); //calling the scanner to open the file
-			do 
-			{
-				for(int i = 0; i < row; i++)  // ARRAYS WONT WORK!!! needs a list/arraylist/vector because I dont know how big the matrix will be
-				{
-					String scanLine = fromFile.nextLine();
-					//char [][] matrix = new char [row][col];
-					char [] scanLineArray = scanLine.toCharArray();
-					for(int j = 0; j < col; j++) 
-					{
-						petriDish[i][j] = scanLineArray[j];
-						
-					}
-					//petriDish[row][col] = matrix[row][col];
-				}
-				
-			}while(fromFile.hasNextLine());
-			fromFile.close();
-			//System.out.print(petriDish[row][col]);
-		}
-		catch(FileNotFoundException f) 
-		{
-			System.out.print("File not Found");
-		}
-		try //try catch exception handling for the file
-		{
-			
-			Scanner scan = new Scanner (new File("C:/Users/15624/eclipse-workspace/CECS328_petriDish/input.txt"));//scan the file 
-			while(scan.hasNext()) //if there is still another line of the file
-			{	
-					while(scan.nextLine() != null) 
-					{
-						col++;
-					}
-			}
-
-			for(int i = 0; i < row; i++) 
-			{
-				for(int j = 0; j < col; j++) 
-				{
-					if(scan.hasNextInt()) 
-					{
-						int [][] Dish = new int[i][j];
-						Dish[i][j] = scan.nextInt();
-						System.out.print(petriDish[i][j]);
-					}
-				}
-			}
-			scan.close();
-		*/
 	}	
 	
 	/**
@@ -147,5 +94,25 @@ public class PetriDish
 			}
 		}
 		return p;
+	}
+	
+	/**
+	 * This function will check the left side if there is any letter
+	 * @return a boolean (T/F) 
+	 * if yes, then copy the letter
+	 * if no, then go through the available letters and write an unused one.
+	 *      depends on the shape.
+	 */
+	public char leftSideCheck(Point p) 
+	{
+		int x = (int) p.getX();
+		int y = (int) p.getY();
+		if(y == 0) 
+		{
+			return ' ';
+		}
+		Point leftSide = new Point(x, y-1);
+		char charAtLoc = petriDish[x][y];
+		return charAtLoc;
 	}
 }
