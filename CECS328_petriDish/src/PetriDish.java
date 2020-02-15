@@ -115,4 +115,5 @@ public class PetriDish
 		char charAtLoc = petriDish[x][y];
 		return charAtLoc;
 	}
+	// Do topleft, top, topright Checks
 }
