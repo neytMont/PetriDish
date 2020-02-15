@@ -7,6 +7,8 @@ public class Main
 		// TODO Auto-generated method stub
 		PetriDish dish = new PetriDish();
 		dish.loadTxt();
+		System.out.print(dish.lookForAsterisk());
+	
 	}
 
 }
