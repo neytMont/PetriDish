@@ -133,7 +133,7 @@ public class PetriDish
 	}
 	
 	/**
-	 * This fuction will check the top right side if there is any letter
+	 * This function will check the top right side if there is any letter
 	 * @return charAtLoc the character at that location
 	 */
 	public char topLeftCheck(Point p) 
@@ -153,7 +153,7 @@ public class PetriDish
 	}
 	
 	/**
-	 * This fuction will check the top side if there is any letter
+	 * This function will check the top side if there is any letter
 	 * @return charAtLoc the character at that location
 	 */
 	public char topSideCheck(Point p) 
@@ -173,7 +173,7 @@ public class PetriDish
 	}
 	
 	/**
-	 * This fuction will check the top right side if there is any letter
+	 * This function will check the top right side if there is any letter
 	 * @return charAtLoc the character at that location
 	 */
 	public char topRightCheck(Point p) 
@@ -193,7 +193,7 @@ public class PetriDish
 	}
 	
 	/**
-	 * This fuction will check the right side if there is any letter
+	 * This function will check the right side if there is any letter
 	 * @return charAtLoc the character at that location
 	 */
 	public char rightSideCheck(Point p) 
@@ -213,7 +213,7 @@ public class PetriDish
 	}
 	
 	/**
-	 * This fuction will check the lower right side if there is any letter
+	 * This function will check the lower right side if there is any letter
 	 * @return charAtLoc the character at that location
 	 */
 	public char lowerRightCheck(Point p) 
@@ -233,7 +233,7 @@ public class PetriDish
 	}
 	
 	/**
-	 * This fuction will check the lower side if there is any letter
+	 * This function will check the lower side if there is any letter
 	 * @return charAtLoc the character at that location
 	 */
 	public char lowerSideCheck(Point p) 
@@ -253,7 +253,7 @@ public class PetriDish
 	}
 	
 	/**
-	 * This fuction will check the lower left side if there is any letter
+	 * This function will check the lower left side if there is any letter
 	 * @return charAtLoc the character at that location
 	 */
 	public char lowerLeftCheck(Point p) 
@@ -271,5 +271,10 @@ public class PetriDish
 			return ' ';
 		}
 	}
+	
+	//use arraylist
+	//Find the largestRowOfAsterisk and largestColOfAsterisk within the same blob
+	//rotations and mirrors..
+	
 }
 
