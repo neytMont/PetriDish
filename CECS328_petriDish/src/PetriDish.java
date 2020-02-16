@@ -11,21 +11,21 @@ public class PetriDish
 {
 	//use the star wars point and map as a basis for this project. use point location as
 	//a starting point to check if there is an element horizontal,vertical, and diagonal to the element.
-	private char [][] petriDish; //petriDish is a 2D array with asterisk
+	private char [][] petriDish; //petriDish container
 	public char [] letter = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-	
+	List<String> row = null;
+	int col = 0;
 	/**
 	 * Reading the file and making the matrix/xy-coordinates
 	 */
 	public void loadTxt() 
 	{
 		Path fileName = Paths.get("input.txt");  //name if the file
+		List<String> row = null;
+		int col = 0;
 		/**
 		 * get the program to load the file and then using List read rows 
 		 */
-		List<String> row = null;
-		int col = 0;
-		
 		try 
 		{
 			row = Files.readAllLines(fileName);
@@ -96,24 +96,180 @@ public class PetriDish
 		return p;
 	}
 	
+	public char getCharAtLoc(Point p) 
+	{
+		try 
+		{
+			int x = (int) p.getX();
+			int y = (int) p.getY();
+			char c = petriDish[x][y];
+			return c;
+		}
+		catch(ArrayIndexOutOfBoundsException oob) 
+		{
+			return ' ';
+		}
+	}
 	/**
 	 * This function will check the left side if there is any letter
-	 * @return a boolean (T/F) 
+	 * @return charAtLoc the character at that location
 	 * if yes, then copy the letter
 	 * if no, then go through the available letters and write an unused one.
 	 *      depends on the shape.
 	 */
 	public char leftSideCheck(Point p) 
 	{
-		int x = (int) p.getX();
-		int y = (int) p.getY();
-		if(y == 0) 
+		try {
+			int x = (int) p.getX();
+			int y = (int) p.getY();
+			Point leftSide = new Point(x, y-1);
+			char charAtLoc = getCharAtLoc(leftSide);
+			return charAtLoc;
+		}
+		catch(ArrayIndexOutOfBoundsException oob) 
 		{
 			return ' ';
 		}
-		Point leftSide = new Point(x, y-1);
-		char charAtLoc = petriDish[x][y];
-		return charAtLoc;
 	}
-	// Do topleft, top, topright Checks
+	
+	/**
+	 * This fuction will check the top right side if there is any letter
+	 * @return charAtLoc the character at that location
+	 */
+	public char topLeftCheck(Point p) 
+	{
+		try 
+		{
+			int x = (int) p.getX();
+			int y = (int) p.getY();
+			Point topLeft = new Point(x-1, y-1);
+			char charAtLoc = getCharAtLoc(topLeft);
+			return charAtLoc;
+		}
+		catch(ArrayIndexOutOfBoundsException oob)
+		 {
+			 return ' ';
+		 }
+	}
+	
+	/**
+	 * This fuction will check the top side if there is any letter
+	 * @return charAtLoc the character at that location
+	 */
+	public char topSideCheck(Point p) 
+	{
+		try 
+		{
+			int x = (int) p.getX();
+			int y = (int) p.getY();
+			Point topSide = new Point(x-1,y);
+			char charAtLoc = getCharAtLoc(topSide);
+			return charAtLoc;
+		}
+		catch(ArrayIndexOutOfBoundsException oob)
+		{
+			return '0' ;
+		}
+	}
+	
+	/**
+	 * This fuction will check the top right side if there is any letter
+	 * @return charAtLoc the character at that location
+	 */
+	public char topRightCheck(Point p) 
+	{
+		try 
+		{
+			int x = (int) p.getX();
+			int y = (int) p.getY();
+			Point topRight = new Point(x - 1, y + 1);
+			char charAtLoc = getCharAtLoc(topRight);
+			return charAtLoc;
+		}
+		catch(ArrayIndexOutOfBoundsException oob)
+		{
+			return ' ';
+		}
+	}
+	
+	/**
+	 * This fuction will check the right side if there is any letter
+	 * @return charAtLoc the character at that location
+	 */
+	public char rightSideCheck(Point p) 
+	{
+		try
+		{
+			int x = (int) p.getX();
+			int y = (int) p.getY();
+			Point rightSide = new Point(x, y+1);
+			char charAtLoc = getCharAtLoc(rightSide);
+			return charAtLoc;
+		} 
+		catch(ArrayIndexOutOfBoundsException oob)
+		{
+			return ' ';
+		}
+	}
+	
+	/**
+	 * This fuction will check the lower right side if there is any letter
+	 * @return charAtLoc the character at that location
+	 */
+	public char lowerRightCheck(Point p) 
+	{
+		try
+		{
+			int x = (int) p.getX();
+			int y = (int) p.getY();
+			Point lowerRightSide = new Point(x + 1, y + 1);
+			char charAtLoc = getCharAtLoc(lowerRightSide);
+			return charAtLoc;
+		} 
+		catch(ArrayIndexOutOfBoundsException oob)
+		{
+			return ' ';
+		}
+	}
+	
+	/**
+	 * This fuction will check the lower side if there is any letter
+	 * @return charAtLoc the character at that location
+	 */
+	public char lowerSideCheck(Point p) 
+	{
+		try
+		{
+			int x = (int) p.getX();
+			int y = (int) p.getY();
+			Point lowerSide = new Point(x + 1, y);
+			char charAtLoc = getCharAtLoc(lowerSide);
+			return charAtLoc;
+		} 
+		catch(ArrayIndexOutOfBoundsException oob)
+		{
+			return ' ';
+		}
+	}
+	
+	/**
+	 * This fuction will check the lower left side if there is any letter
+	 * @return charAtLoc the character at that location
+	 */
+	public char lowerLeftCheck(Point p) 
+	{
+		try
+		{
+			int x = (int) p.getX();
+			int y = (int) p.getY();
+			Point lowerLeftSide = new Point(x + 1, y - 1);
+			char charAtLoc = getCharAtLoc(lowerLeftSide);
+			return charAtLoc;
+		} 
+		catch(ArrayIndexOutOfBoundsException oob)
+		{
+			return ' ';
+		}
+	}
 }
+
